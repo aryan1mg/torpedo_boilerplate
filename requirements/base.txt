@@ -1,0 +1,2 @@
+sanic==20.6.3
+tortoise-orm==0.16.15
