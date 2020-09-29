@@ -1,4 +1,6 @@
 import ujson
+import time
+import uuid
 
 
 def json_file_to_dict(_file: str) -> dict:
@@ -18,3 +20,11 @@ def json_file_to_dict(_file: str) -> dict:
         print(e)
 
     return config
+
+
+def get_current_time():
+    return int(time.time())
+
+
+def get_uuid_token():
+    return str(uuid.uuid4())

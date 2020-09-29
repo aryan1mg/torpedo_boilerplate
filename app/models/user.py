@@ -1,9 +1,14 @@
 from tortoise import Model, fields
+from .mixins import ModelUtilMixin
 
 
-class Users(Model):
-    id = fields.IntField(pk=True)
-    name = fields.CharField(50)
+class User(Model, ModelUtilMixin):
+    id = fields.BigIntField(pk=True)
+    username = fields.TextField()
+    name = fields.TextField()
+    created = fields.BigIntField()
+    updated = fields.BigIntField()
 
-    def __str__(self):
-        return f"User {self.id}: {self.name}"
+    class Meta:
+        table = 'user'
+

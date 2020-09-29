@@ -1,24 +1,25 @@
 from sanic import Blueprint, response
 from sanic.response import json
 
-from ..models.user import Users
+from ..managers import UserManager
 
 
 sample_blueprint = Blueprint('sample_blueprint', version=4)
 
 
-@sample_blueprint.route('/sample_url', methods=['GET'])
-async def by_email_id(request):
+@sample_blueprint.route('/hello', methods=['GET'])
+async def hello(request):
     return json({'message': 'hello world!'})
 
 
-@sample_blueprint.route("/")
+@sample_blueprint.route("/users")
 async def list_all(request):
-    users = await Users.all()
-    return response.json({"users": [str(user) for user in users]})
+    _response = await UserManager.get_users()
+    return response.json(_response)
 
 
 @sample_blueprint.route("/user")
 async def add_user(request):
-    user = await Users.create(name="New User")
-    return response.json({"user": str(user)})
+    payload = request.json
+    _response = await UserManager.create_user(payload)
+    return response.json(_response)

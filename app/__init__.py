@@ -2,7 +2,7 @@ from sanic import Sanic
 from tortoise.contrib.sanic import register_tortoise
 
 from .routes import sample_blueprint
-from .models.user import Users
+from .models.user import User
 
 
 def create_app(config):
