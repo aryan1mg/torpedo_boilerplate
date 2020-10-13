@@ -1,7 +1,7 @@
-from tortoise import Model, fields
 from collections import defaultdict
 
-from ..fields import CustomTextField
+from tortoise import fields
+
 from .mixins import ModelUtilMixin
 from .abc import AbstractBaseUser
 
@@ -20,19 +20,19 @@ class User(AbstractBaseUser, ModelUtilMixin):
         result = await super().to_dict(filter_keys, get_related, related_fields)
         if result:
             prop_dict = {}
-            if result.get('roles') and type(result['roles']) == list:
+            if result.get('roles') and isinstance(result['roles'], list):
                 role_dict = defaultdict(list)
                 for role in result['roles']:
                     role_dict[role.get('app', "")].append(role.get('role'))
                 result['roles'] = dict(role_dict)
-            if result.get('properties') and type(result['properties']) == list:
+            if result.get('properties') and isinstance(result['properties'], list):
                 prop_dict = {}
                 for prop in result['properties']:
                     prop_dict[prop.get('name', "")] = prop.get('value')
                 result['properties'] = dict(prop_dict)
             else:
                 result['properties'] = {}
-            if result.get('properties_new') and type(result['properties_new']) == list:
+            if result.get('properties_new') and isinstance(result['properties_new'], list):
                 for prop in result['properties_new']:
                     prop_dict[prop.get('name', "")] = prop.get('value')
                 result['properties'] = dict(prop_dict)

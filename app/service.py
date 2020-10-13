@@ -1,24 +1,36 @@
+from sanic import Sanic
+from tortoise.contrib.sanic import register_tortoise
+from vessel import RedisCache
+
 from .cache_host import cache_host
 from .log import LOGGING_CONFIG_DEFAULTS
 from .utils import get_config, register_exception_handler
 from .routes import group
 
-from sanic import Sanic
-from tortoise.contrib.sanic import register_tortoise
-from vessel import RedisCache
-
 config = get_config()
 
 
 def register_app_blueprints(_app):
+    """
+    :param _app: Sanic app instance
+    :return:
+    """
     _app.blueprint(group)
 
 
 def init_cache(_config):
+    """
+    :param _config: config from json file in application root
+    :return:
+    """
     cache_host['global'] = RedisCache(_config['REDIS_HOST'], _config['REDIS_PORT'])
 
 
 def register_db(_app):
+    """
+    :param _app: Sanic app instance
+    :return:
+    """
     register_tortoise(
         _app,
         config={

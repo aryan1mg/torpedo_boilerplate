@@ -1,6 +1,5 @@
 from sanic import Blueprint
 
-from ..managers import UserManager
 from ..utils import send_response
 
 

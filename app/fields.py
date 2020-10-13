@@ -1,8 +1,9 @@
+from typing import Optional, Union, Any
+
 import warnings
 import ujson
 
-from typing import Optional, Union, Any
-from tortoise.exceptions import BaseORMException, ConfigurationError
+from tortoise.exceptions import BaseORMException
 from tortoise.fields import TextField, Field
 
 
