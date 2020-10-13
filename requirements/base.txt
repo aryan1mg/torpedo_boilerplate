@@ -1,2 +1,5 @@
+asyncpg==0.21.0
+newrelic==5.20.1.150
 sanic==20.6.3
 tortoise-orm==0.16.15
+git+ssh://git@github.com/1mgOfficial/vessel.git@1.1.1
