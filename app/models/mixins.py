@@ -1,9 +1,10 @@
-from tortoise import Model
-from tortoise.exceptions import NoValuesFetched
 from datetime import datetime
 
+from tortoise import Model
+from tortoise.exceptions import NoValuesFetched
 
-class ModelUtilMixin(object):
+
+class ModelUtilMixin:
 
     async def to_dict(self: Model, filter_keys=None, get_related=True, related_fields=None):
         """
@@ -33,7 +34,8 @@ class ModelUtilMixin(object):
                 bk_relational_data = []
                 try:
                     related_data = await getattr(self, key).all()
-                except NoValuesFetched as e:
+                except NoValuesFetched as exception:
+                    print(exception)
                     await self.fetch_related(key)
                     related_data = await getattr(self, key).all()
                 for obj in related_data:
