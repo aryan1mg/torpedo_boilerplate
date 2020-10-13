@@ -1,6 +1,12 @@
 {
+  "NAME": "service-name",
   "HOST": "0.0.0.0",
-  "PORT": 4551,
+  "PORT": 6561,
   "WORKERS": 2,
-  "DEBUG": true
+  "DEBUG": true,
+  "POSTGRES_HOST": "test-host",
+  "POSTGRES_PORT": 5432,
+  "POSTGRES_DB": "test-db",
+  "POSTGRES_USER": "test-user",
+  "POSTGRES_PASS": "test-pass"
 }
