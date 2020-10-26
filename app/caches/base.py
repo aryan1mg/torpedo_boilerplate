@@ -1,11 +1,11 @@
 import json
 
 from ..cache_host import cache_host
-from ..utils import get_config
+from torpedo import CONFIG
 
 
 class Base:
-    config = get_config()
+    config = CONFIG.config
     _service_prefix = config['NAME']
     _key_prefix = 'base'
     _delimiter = ':'

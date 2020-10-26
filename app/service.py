@@ -1,88 +1,68 @@
-from sanic import Sanic
-from tortoise.contrib.sanic import register_tortoise
-from vessel import RedisCache
+from torpedo import Host, CONFIG, register_cache
 
+from sanic import Blueprint
 from .cache_host import cache_host
-from .log import LOGGING_CONFIG_DEFAULTS
-from .utils import get_config, register_exception_handler
+from .utils import get_config
 from .routes import group
 
 config = get_config()
 
 
-def register_app_blueprints(_app):
+def init_cache(multiple=False):
     """
-    :param _app: Sanic app instance
     :return:
     """
-    _app.blueprint(group)
+    if multiple:
+        cache_host.update(register_cache(multiple=True))
+    else:
+        cache_host['global'] = register_cache()
 
 
-def init_cache(_config):
-    """
-    :param _config: config from json file in application root
-    :return:
-    """
-    cache_host['global'] = RedisCache(_config['REDIS_HOST'], _config['REDIS_PORT'])
-
-
-def register_db(_app):
-    """
-    :param _app: Sanic app instance
-    :return:
-    """
-    register_tortoise(
-        _app,
-        config={
-            "connections": {
-                "default": {
-                    "engine": "tortoise.backends.asyncpg",
-                    "credentials": {
-                        "host": config['POSTGRES_HOST'],
-                        "port": config['POSTGRES_PORT'],
-                        "user": config['POSTGRES_USER'],
-                        "password": config['POSTGRES_PASS'],
-                        "database": config['POSTGRES_DB']
-                    },
-                },
-            },
-            "apps": {
-                "identity": {
-                    "models": ['app.models.user'],
-                    "default_connection": "default"
+def get_db_config():
+    db_config = {
+        "connections": {
+            "default": {
+                "engine": "tortoise.backends.asyncpg",
+                "credentials": {
+                    "host": config['POSTGRES_HOST'],
+                    "port": config['POSTGRES_PORT'],
+                    "user": config['POSTGRES_USER'],
+                    "password": config['POSTGRES_PASS'],
+                    "database": config['POSTGRES_DB']
                 },
             },
         },
-        generate_schemas=False
-    )
+        "apps": {
+            "identity": {
+                "models": ['app.models.user'],
+                "default_connection": "default"
+            },
+        },
+    }
+    return db_config
 
 
 if __name__ == '__main__':
+    config = CONFIG.config
 
-    # read config from file
-    host = config['HOST']
-    port = config['PORT']
-    # debug would be true for local and staging development, make sure it is false on production
-    debug = config.get('DEBUG', False)
-    num_workers = config.get('WORKERS', 2)  # num worker to run, should be <= num cores
-    log_config = False if debug else LOGGING_CONFIG_DEFAULTS  # custom logging setting
+    init_cache(multiple=True)
 
-    app = Sanic(config['NAME'], log_config=log_config)
+    Host._name = config['NAME']
+    Host._host = config['HOST']
+    Host._port = config['PORT']
+    Host._workers = config.get('WORKERS', 2)  # number of workers to run, keep <= num of cores
+    # debug would be true for local, make sure it is false on staging and production
+    Host._debug = config.get('DEBUG', True)
 
-    # register application dependencies
+    # register combined blueprint group here
+    handlers = []
+    for _group in group.blueprints:
+        for sub_group in _group.routes:
+            handlers.append((_group, sub_group))
 
-    # register blueprints
-    register_app_blueprints(app)
+    Host._handlers = handlers
 
-    # setup db connection
-    register_db(app)
+    # setup db config
+    Host._db_config = get_db_config()
 
-    # setup exception handlers
-    register_exception_handler(app)
-
-    app.run(
-        host=host,
-        port=port,
-        debug=debug,
-        workers=num_workers
-    )
+    Host.run()

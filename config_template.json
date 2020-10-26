@@ -1,5 +1,6 @@
 {
   "NAME": "service-name",
+  "HTTP_VERSION": "1.0.0",
   "HOST": "0.0.0.0",
   "PORT": 6561,
   "WORKERS": 2,
@@ -8,5 +9,8 @@
   "POSTGRES_PORT": 5432,
   "POSTGRES_DB": "test-db",
   "POSTGRES_USER": "test-user",
-  "POSTGRES_PASS": "test-pass"
+  "POSTGRES_PASS": "test-pass",
+  "LOCATION_SERVICE": {},
+  "SENTRY_DSN": "",
+  "INTERSERVICE_TIMEOUT": ""
 }

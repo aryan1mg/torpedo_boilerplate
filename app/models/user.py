@@ -1,8 +1,8 @@
 from collections import defaultdict
 
-from tortoise import fields
+from tortoise import fields, Model
+from torpedo.db import ModelUtilMixin, CustomTextField, CITextField
 
-from .mixins import ModelUtilMixin
 from .abc import AbstractBaseUser
 
 
@@ -38,3 +38,47 @@ class User(AbstractBaseUser, ModelUtilMixin):
                 result['properties'] = dict(prop_dict)
         result.pop('properties_new', None)
         return result
+
+
+class UserProperty(Model, ModelUtilMixin):
+    """
+        UserProperty Model Points to the "profile" table in the Database
+    """
+    # TODO: Note: Here "id" field does not exists in the DB,  we are pointing it to the username column of the db.
+    #  There is no use in App for the "id" field,  This is added just for the convention of the Tortoise ORM.
+    #  In Future when "id" field is added to the DB, we need to the update the "id" field here.
+
+    json_keys_for_name = ['plan_info']
+    serializable_keys = {'username', 'name', 'value'}
+
+    # id = fields.TextField(source_field='username', null=True, pk=True)
+    username = fields.ForeignKeyField(
+        'identity.User', related_name='properties', on_delete=fields.CASCADE, source_field='username', pk=True
+    )
+    name = CustomTextField(index=True)
+    value = CustomTextField(index=True)
+
+    class Meta:
+        table = 'profile'
+
+
+class UserPropertyNew(Model, ModelUtilMixin):
+    """
+        UserProperty Model Points to the "profile" table in the Database
+    """
+
+    json_keys_for_name = ['plan_info']
+    serializable_keys = {'username', 'name', 'value'}
+
+    id = fields.BigIntField(pk=True)
+    username = fields.ForeignKeyField(
+        'identity.User', related_name='properties_new', on_delete=fields.CASCADE, source_field='username'
+    )
+    name = CustomTextField(index=True)
+    value = CustomTextField(index=True)
+    created = fields.BigIntField(null=True)
+    updated = fields.BigIntField(null=True)
+
+    class Meta:
+        table = 'profile_new'
+

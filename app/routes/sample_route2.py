@@ -1,10 +1,10 @@
 from sanic import Blueprint
 
-from ..utils import send_response
+from torpedo import send_response
 from ..managers import UserManager
 
 
-test_blueprint = Blueprint('test', version=4)
+test_blueprint = Blueprint('test', version='v4')
 
 
 @test_blueprint.route("/users", methods=['GET'])
@@ -19,3 +19,4 @@ async def add_user(request):
     payload = request.json
     _response = await UserManager.get_users(payload)
     return send_response(_response)
+
