@@ -14,4 +14,3 @@ class UserManager:
             raise BadRequestException('No users found.')
         user = await user[0].to_dict()
         return user
-
