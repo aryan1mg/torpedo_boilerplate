@@ -10,7 +10,9 @@
   "POSTGRES_DB": "test-db",
   "POSTGRES_USER": "test-user",
   "POSTGRES_PASS": "test-pass",
+  "INTERSERVICE_TIMEOUT": "",
+  "REDIS_HOST": "localhost",
+  "REDIS_PORT": 6379,
   "LOCATION_SERVICE": {},
-  "SENTRY_DSN": "",
-  "INTERSERVICE_TIMEOUT": ""
+  "SENTRY_DSN": ""
 }

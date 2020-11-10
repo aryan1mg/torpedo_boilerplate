@@ -1,4 +1,4 @@
-from torpedo import CONFIG, BaseApiRequest
+from torpedo import CONFIG
 
 from ..base_api_client import APIClient
 

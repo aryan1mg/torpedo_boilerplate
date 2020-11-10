@@ -1,4 +1,2 @@
-import enum
-
 
 X_SHARED_CONTEXT = 'X-SHARED-CONTEXT'

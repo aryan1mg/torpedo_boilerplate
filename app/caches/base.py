@@ -1,4 +1,4 @@
-import json
+import ujson as json
 
 from ..cache_host import cache_host
 from torpedo import CONFIG
