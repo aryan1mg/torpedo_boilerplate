@@ -7,7 +7,8 @@ basic = Blueprint('sample_blueprint', version='v4')
 
 @basic.route('/hello/<name:string>', methods=['GET'], name='hello')
 async def hello(request: Request, name):
-    """ A very basic route created using sanic blueprint. """
-    payload = request.request_params()
+    """
+    A very basic route created using sanic blueprint.
+    """
     return send_response({'message': 'hello {}!'.format(name)})
 

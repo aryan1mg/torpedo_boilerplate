@@ -24,7 +24,7 @@ touch config.json
 1. hello world
 ```
 curl --request GET \
-  --url http://0.0.0.0:6561/v4/hello
+  --url http://0.0.0.0:6561/v4/hello/ajay
 ```
 
 2. get user
