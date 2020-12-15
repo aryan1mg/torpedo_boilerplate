@@ -1,1 +1,1 @@
-git+ssh://git@github.com/ajay1mg/torpedo.git@0.0.3
+git+ssh://git@github.com/ajay1mg/torpedo.git@0.11.5

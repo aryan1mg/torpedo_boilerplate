@@ -1,4 +1,4 @@
-from .base import Base
+from torpedo.wrappers import Base
 
 
 class UserCache(Base):
