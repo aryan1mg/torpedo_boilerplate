@@ -2,8 +2,6 @@ from torpedo import Host, CONFIG
 
 from .routes import blueprints
 
-config = CONFIG.config
-
 
 if __name__ == '__main__':
     # config object will be dict representation of config.json read by the utility function in torpedo
