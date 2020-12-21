@@ -1,1 +1,1 @@
-git+ssh://git@gitlab.com/1mgOfficial/torpedo.git@0.11.6
+git+ssh://git@gitlab.com/1mgOfficial/torpedo.git@1.0.0
