@@ -1,0 +1,1 @@
+git+https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/1mgOfficial/torpedo.git@1.0.4
