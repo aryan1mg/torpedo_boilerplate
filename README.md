@@ -3,9 +3,9 @@
 #### Please follow the following steps to setup the sample app:
 
 ```
-git clone git@github.com:1mgOfficial/sanic_boilerplate.git
-cd sanic_boilerplate
-pyenv virtualenv 3.7.2 sanic_boilerplate
+git clone git@gitlab.com:1mgOfficial/torpedo_boilerplate.git
+cd torpedo_boilerplate
+pyenv virtualenv 3.7.2 torpedo_boilerplate
 touch config.json
 ```
 * copy config from config_template.json.
