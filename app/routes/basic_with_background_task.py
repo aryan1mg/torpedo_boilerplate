@@ -5,7 +5,7 @@ from sanic import Blueprint
 from torpedo import send_response
 
 
-basic_with_background_task = Blueprint('test', version='v4')
+basic_with_background_task = Blueprint('basic_with_background', version=4)
 
 
 @basic_with_background_task.route("/long_task", methods=['GET'])

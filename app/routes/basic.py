@@ -2,7 +2,7 @@ from sanic import Blueprint
 from torpedo import send_response, Request
 
 
-basic = Blueprint('sample_blueprint', version='v4')
+basic = Blueprint('basic_blueprint', version=4)
 
 
 @basic.route('/hello/<name:string>', methods=['GET'], name='hello')

@@ -16,5 +16,6 @@
   "LOCATION_SERVICE": {
     "HOST": ""
   },
-  "SENTRY_DSN": ""
+  "SENTRY_DSN": "",
+  "APM": {"SERVER_URL":  "http://localhost:8200", "ENV": "local"}
 }
