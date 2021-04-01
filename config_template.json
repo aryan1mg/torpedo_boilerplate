@@ -17,5 +17,5 @@
     "HOST": ""
   },
   "SENTRY_DSN": "",
-  "APM": {"SERVER_URL":  "http://localhost:8200", "ENV": "local"}
+  "APM": {"SERVER_URL": "http://localhost:8200", "ENV": "local", "SECRET_TOKEN": "", "ENABLED": false}
 }
