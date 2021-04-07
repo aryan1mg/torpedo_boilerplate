@@ -17,5 +17,13 @@
     "HOST": ""
   },
   "SENTRY_DSN": "",
-  "APM": {"SERVER_URL": "http://localhost:8200", "ENV": "local", "SECRET_TOKEN": "", "ENABLED": false}
+  "APM": {
+    "SERVER_URL": "http://10.1.2.118:8200",
+    "ENVIRONMENT": "staging",
+    "ENABLED": true,
+    "SECRET_TOKEN": "",
+    "SERVER_TIMEOUT": "30s",
+    "SPAN_FRAMES_MIN_DURATION": "10ms",
+    "TRANSACTION_SAMPLE_RATE": 0.1
+   }
 }
