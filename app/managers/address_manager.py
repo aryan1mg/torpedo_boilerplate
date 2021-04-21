@@ -1,4 +1,4 @@
-from torpedo import TaskExecutor, Task
+from torpedo import Task, TaskExecutor
 from torpedo.exceptions import BadRequestException
 
 from ..service_clients import AddressClient

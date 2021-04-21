@@ -1,7 +1,7 @@
 from collections import defaultdict
 
-from tortoise import fields, Model
-from torpedo.db import ModelUtilMixin, CustomTextField
+from torpedo.db import CustomTextField, ModelUtilMixin
+from tortoise import Model, fields
 
 from .abc import AbstractBaseUser
 

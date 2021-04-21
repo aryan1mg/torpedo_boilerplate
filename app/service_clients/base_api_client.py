@@ -1,6 +1,5 @@
 import aiotask_context as context
-
-from torpedo import BaseApiRequest, CONFIG
+from torpedo import CONFIG, BaseApiRequest
 from torpedo.constants import X_SHARED_CONTEXT
 
 

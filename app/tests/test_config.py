@@ -1,7 +1,6 @@
-from torpedo import Host
 import pytest
+from torpedo import Host
 from torpedo.common_utils import CONFIG, json_file_to_dict
-
 
 config = CONFIG.config
 config_template = json_file_to_dict('./config_template.json')

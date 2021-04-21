@@ -1,8 +1,8 @@
-from torpedo.wrappers import ORMWrapper
 from torpedo.exceptions import BadRequestException
+from torpedo.wrappers import ORMWrapper
 
-from ..models import User
 from ..caches import UserCache
+from ..models import User
 
 
 class UserManager:
