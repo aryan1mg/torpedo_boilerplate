@@ -1,9 +1,7 @@
 import asyncio
 
 from sanic import Blueprint
-
 from torpedo import send_response
-
 
 basic_with_background_task = Blueprint('basic_with_background', version=4)
 

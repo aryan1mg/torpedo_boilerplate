@@ -1,8 +1,7 @@
 from torpedo import Host
 
-from .routes import blueprint_group
 from .listeners import listeners
-
+from .routes import blueprint_group
 
 if __name__ == '__main__':
 

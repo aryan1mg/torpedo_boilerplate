@@ -1,12 +1,12 @@
 import asyncio
+
 import asynctest
-
-from ..caches import UserCache
-from ..managers import UserManager
-
 from asynctest import patch
 from torpedo.exceptions import BadRequestException
 from torpedo.wrappers.db_wrapper import ORMWrapper
+
+from ..caches import UserCache
+from ..managers import UserManager
 
 
 class UserManagerTest(asynctest.TestCase):

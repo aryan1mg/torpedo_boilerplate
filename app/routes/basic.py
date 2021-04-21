@@ -1,6 +1,5 @@
 from sanic import Blueprint
-from torpedo import send_response, Request
-
+from torpedo import Request, send_response
 
 basic = Blueprint('basic_blueprint', version=4)
 

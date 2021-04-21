@@ -1,8 +1,7 @@
 from sanic import Blueprint
-from torpedo import send_response, Request
+from torpedo import Request, send_response
 
 from ..managers import AddressManager
-
 
 with_service_client = Blueprint('basic_with_service_client', version=4)
 

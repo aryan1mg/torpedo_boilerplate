@@ -1,6 +1,5 @@
-from tortoise import Model, fields
-
 from torpedo.db import CITextField, CustomTextField
+from tortoise import Model, fields
 
 
 class AbstractBaseUser(Model):
