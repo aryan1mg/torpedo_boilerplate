@@ -1,3 +1,3 @@
-__all__ = ['AddressClient']
+__all__ = ["AddressClient"]
 
 from .location_service import AddressClient

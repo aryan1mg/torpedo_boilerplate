@@ -4,15 +4,32 @@ from tortoise import Model, fields
 
 class AbstractBaseUser(Model):
     """
-        Abstract Class for User and Guest User Models
-        Provides all the fields for User Tables
+    Abstract Class for User and Guest User Models
+    Provides all the fields for User Tables
 
     """
 
-    serializable_keys = {'username', 'suspended', 'verified', 'is_guest', 'email', 'number', 'number_verified',
-                         'is_migrated', 'email_verified', 'external_id', 'roles', 'properties', 'updated_on',
-                         'authentication_token_expiry', 'suspended_on', 'authentication_token',
-                         'created_on', 'last_login', 'properties_new'}
+    serializable_keys = {
+        "username",
+        "suspended",
+        "verified",
+        "is_guest",
+        "email",
+        "number",
+        "number_verified",
+        "is_migrated",
+        "email_verified",
+        "external_id",
+        "roles",
+        "properties",
+        "updated_on",
+        "authentication_token_expiry",
+        "suspended_on",
+        "authentication_token",
+        "created_on",
+        "last_login",
+        "properties_new",
+    }
 
     username = CITextField(max_length=100, pk=True)
     passkey = fields.CharField(max_length=100, null=True)
@@ -38,4 +55,3 @@ class AbstractBaseUser(Model):
 
     class Meta:
         abstract = True
-

@@ -3,10 +3,10 @@ from torpedo import send_response
 
 from ..managers import UserManager
 
-basic_with_db_cache = Blueprint('basic_with_db_cache', version=4)
+basic_with_db_cache = Blueprint("basic_with_db_cache", version=4)
 
 
-@basic_with_db_cache.route("/users", methods=['GET'])
+@basic_with_db_cache.route("/users", methods=["GET"])
 async def get_user(request):
     """
     this is an example of route which interacts with the database connection created in same service.

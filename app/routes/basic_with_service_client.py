@@ -3,10 +3,10 @@ from torpedo import Request, send_response
 
 from ..managers import AddressManager
 
-with_service_client = Blueprint('basic_with_service_client', version=4)
+with_service_client = Blueprint("basic_with_service_client", version=4)
 
 
-@with_service_client.route('/address_by_id', methods=['GET'])
+@with_service_client.route("/address_by_id", methods=["GET"])
 async def address_by_id(request: Request):
     """
     this is an example of route which interacts with another microservice returning

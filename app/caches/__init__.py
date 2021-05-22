@@ -1,3 +1,3 @@
-__all__ = ['UserCache']
+__all__ = ["UserCache"]
 
 from .user import UserCache

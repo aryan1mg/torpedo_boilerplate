@@ -5,18 +5,20 @@ from torpedo.constants import X_SHARED_CONTEXT
 
 class APIClient(BaseApiRequest):
     """
-        Base class for all inter service requests. Each method will return
+    Base class for all inter service requests. Each method will return
 
-        AsyncTaskResponse(self._data['data'],
-                          meta=self._data.get('meta', None),
-                          status_code=self._data['status_code'],
-                          headers=headers)
+    AsyncTaskResponse(self._data['data'],
+                      meta=self._data.get('meta', None),
+                      status_code=self._data['status_code'],
+                      headers=headers)
     """
 
-    _timeout = CONFIG.config['INTERSERVICE_TIMEOUT']
+    _timeout = CONFIG.config["INTERSERVICE_TIMEOUT"]
 
     @classmethod
-    def get_inter_service_headers(cls, headers_keys: list = None, get_shared_context=False):
+    def get_inter_service_headers(
+        cls, headers_keys: list = None, get_shared_context=False
+    ):
         headers_keys = headers_keys or list()
         _headers = {}
         headers = {}
