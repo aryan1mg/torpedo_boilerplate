@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-torpedo = {editable = true, ref = "1.5.4", git = "ssh://git@gitlab.com/1mgOfficial/torpedo.git"}
+torpedo = {editable = true, ref = "1.5.6", git = "ssh://git@gitlab.com/1mgOfficial/torpedo.git"}
 
 [dev-packages]
 
