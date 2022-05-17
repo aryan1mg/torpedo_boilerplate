@@ -4,7 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-torpedo = {editable = true, ref = "1.5.6", git = "ssh://git@gitlab.com/1mgOfficial/torpedo.git"}
+torpedo = {editable = true, ref = "2.2.2", git = "ssh://git@bitbucket.org/tata1mg/torpedo.git"}
+tortoise_wrapper = {editable = true, ref = "0.5.1", git = "ssh://git@bitbucket.org/tata1mg/tortoise_wrapper.git"}
+cache_wrapper = {editable = true, ref = "2.1.0", git = "ssh://git@bitbucket.org/tata1mg/cache_wrapper.git"}
 
 [dev-packages]
 

@@ -1,7 +1,7 @@
-from torpedo.wrappers import Base
+from redis_wrapper import RedisCache
 
 
-class UserCache(Base):
+class UserCache(RedisCache):
     _key_prefix = "user"
     expire_time = 60 * 60
 
