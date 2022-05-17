@@ -1,4 +1,5 @@
-from torpedo.db import CITextField, CustomTextField
+from tortoise_wrapper.db import CITextField, CustomTextField
+
 from tortoise import Model, fields
 
 
