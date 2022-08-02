@@ -1,3 +1,4 @@
-__all__ = ["User"]
+__all__ = ["User","Crud"]
 
 from .user import User
+from .Crud import Crud
