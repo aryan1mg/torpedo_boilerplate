@@ -14,7 +14,6 @@ class UserManager1:
 
     @classmethod
     async def get_user(cls, payload):
-        # name = str(payload)
         user = await ORMWrapper.get_by_filters(Crud,payload)
         if user:
             for i in range(len(user)):
