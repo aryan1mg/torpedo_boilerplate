@@ -11,7 +11,8 @@ class UserManager1:
     async def get_all(cls):
         user = await ORMWrapper.raw_sql('Select * from student')
         return user
-
+ #add a comment
+ #added another comment
     @classmethod
     async def get_user(cls, payload):
         user = await ORMWrapper.get_by_filters(Crud,payload)
@@ -55,3 +56,6 @@ class UserManager1:
             return {"message":"user deleted"}
         else:
             return {"message":"No such User Exists"}
+
+#added another comment
+#hello
